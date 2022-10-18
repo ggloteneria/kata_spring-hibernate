@@ -19,7 +19,6 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("web.repositories")
 @ComponentScan(value = "web")
 public class AppConfig {
     @Bean

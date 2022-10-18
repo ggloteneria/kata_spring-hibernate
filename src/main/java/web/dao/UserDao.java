@@ -1,10 +1,11 @@
-package web.service;
+package web.dao;
 
 import web.model.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserDao {
+
 
     void save(User user);
 
@@ -15,4 +16,5 @@ public interface UserService {
     void update(User userToUpdate);
 
     void deleteById(Long id);
+
 }

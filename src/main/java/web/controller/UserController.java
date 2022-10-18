@@ -11,12 +11,16 @@ import web.service.UserService;
 @RequestMapping("/users")
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping()
     public String showUsers(Model model) {
-        model.addAttribute("users", userService.getUsers());
+        model.addAttribute("users", userService.findAll());
         return "users";
     }
 
@@ -44,8 +48,8 @@ public class UserController {
     }
 
     @PostMapping("/{id}/edit_user")
-    public String editUser(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
-        userService.update(id, user);
+    public String editUser(@ModelAttribute("user") User user) {
+        userService.update(user);
         return "redirect:/users";
     }
 
